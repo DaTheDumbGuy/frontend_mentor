@@ -8,7 +8,7 @@ function ProjectWrapper() {
   useEffect(() => {
     const importProject = async () => {
       try {
-        const projectModule = await import(`./pages/${projectName}`);
+        const projectModule = await import(`./pages/${projectName}.jsx`);
         setProjectComponent(projectModule.default); // Assuming default export
       } catch (error) {
         console.error("Error importing project:", error);
