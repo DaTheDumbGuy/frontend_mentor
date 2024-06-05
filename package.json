@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https:DaTheDumbGuy.github.io/frontend_mentor",
+  "homepage": "https://DaTheDumbGuy.github.io/frontend_mentor",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
