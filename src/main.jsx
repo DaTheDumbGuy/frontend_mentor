@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-import "./index.css";
-import ProfilesPage from "./pages/ProfilesPage";
+import HomePage from "./pages/Homepage/HomePage";
+import NotFoundPage from "./pages/Error404/NotFoundPage";
+import Projects from "./pages/ProjectLinks/Projects";
 import ProjectWrapper from "./ProjectWrapper";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/frontend_mentor/projects",
-    element: <ProfilesPage />,
+    element: <Projects />,
   },
   {
     path: "/frontend_mentor/projects/:projectName",

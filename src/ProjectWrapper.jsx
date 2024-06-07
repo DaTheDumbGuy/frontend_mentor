@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
+
+const StatsPreviewCard = lazy(() =>
+  import("./pages/StatsPreviewCardComponent/StatsPreviewCard")
+);
+const NotFoundPage = lazy(() => import("./pages/Error404/NotFoundPage"));
+const RecipePage = lazy(() => import("./pages/Recipe/Recipe"));
+
+const projectComponents = {
+  StatsPreviewCard: StatsPreviewCard,
+  RecipePage: RecipePage,
+};
 
 function ProjectWrapper() {
   const { projectName } = useParams();
-  const [ProjectComponent, setProjectComponent] = useState(null);
 
-  useEffect(() => {
-    const importProject = async () => {
-      try {
-        const projectModule = await import(`./pages/${projectName}.jsx`);
-        setProjectComponent(projectModule.default); // Assuming default export
-      } catch (error) {
-        console.error("Error importing project:", error);
-      }
-    };
+  function getProjectComponent() {
+    return projectComponents[projectName] || NotFoundPage; // Handle non-existent projects
+  }
 
-    importProject();
-  }, [projectName]);
+  const ProjectComponent = getProjectComponent();
 
-  return <>{ProjectComponent}</>;
+  return (
+    <Suspense fallback={<div>Loading Project...</div>}>
+      {ProjectComponent && <ProjectComponent />}
+    </Suspense>
+  );
 }
 
 export default ProjectWrapper;
