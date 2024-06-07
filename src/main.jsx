@@ -6,13 +6,8 @@ import HomePage from "./pages/Homepage/HomePage";
 import NotFoundPage from "./pages/Error404/NotFoundPage";
 import Projects from "./pages/ProjectLinks/Projects";
 import ProjectWrapper from "./ProjectWrapper";
-import "./index.css";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    errorElement: <NotFoundPage />,
-  },
   {
     path: "/frontend_mentor",
     element: <HomePage />,
@@ -24,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/frontend_mentor/projects/:projectName",
     element: <ProjectWrapper />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 
