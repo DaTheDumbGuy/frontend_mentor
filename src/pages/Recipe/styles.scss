@@ -1,0 +1,12 @@
+
+@use '../../sass/abstract/index' as m;
+
+@font-face {
+    font-family: 'Recipe-Main-font';
+    src: url(./fonts/outfit/Outfit-VariableFont_wght.ttf) format('truetype');
+}
+
+main{
+    background:white;
+    @include m.base-font("Recipe-Main-font", 16px);
+}
